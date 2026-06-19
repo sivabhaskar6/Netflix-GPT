@@ -21,3 +21,8 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+
+#some random unwanted file 
+/src/reportWebVitals.js
+/src/setupTests.js
