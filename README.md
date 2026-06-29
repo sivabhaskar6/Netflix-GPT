@@ -7,7 +7,8 @@
 -sign in/up form
 -form validation
 -useRef hook 
-
+-firebase setup
+-deploy the app
 
 # Features
 
