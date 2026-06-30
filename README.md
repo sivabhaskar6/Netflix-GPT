@@ -9,6 +9,8 @@
 -useRef hook 
 -firebase setup
 -deploy the app
+-add firebase Authentication to sign in/up
+    and stored the user credentials in firebase 
 
 # Features
 

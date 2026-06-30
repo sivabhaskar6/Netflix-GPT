@@ -1,5 +1,8 @@
 import { useRef, useState } from "react";
 import checkValidateData from "../utils/validate";
+import {  createUserWithEmailAndPassword ,signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../utils/firebase";
+
 
 
 const Login = () => {
@@ -11,10 +14,51 @@ const Login = () => {
     const [message,setmessage]=useState(null);
 
     const validateData=()=>{
-        console.log(email.current.value)
-        console.log(password.current.value)
-        const validateMessage=checkValidateData(email.current.value,password.current.value,name.current.value);
-        setmessage(validateMessage);
+        // console.log(email.current.value)
+        // console.log(password.current.value)
+
+        const validateMessage=checkValidateData(email.current.value,password.current.value,(name?.current?.value ||"Default"));
+        if(validateMessage)
+        {   
+            setmessage(validateMessage);
+            return;
+        }
+        else{
+            setmessage(null);
+        }
+
+        if(isSignIn)
+        {
+            //sign in form
+            signInWithEmailAndPassword(auth, email.current.value,password.current.value)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                console.log(user);
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                // const errorMessage = error.message;
+                setmessage(errorCode);
+  });
+
+        }
+        else
+        {
+            //sign up form
+            createUserWithEmailAndPassword(auth, email.current.value,password.current.value)
+            .then((userCredential) => {
+                const user = userCredential.user;
+                console.log(user);
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                // const errorMessage = error.message;
+                // ..
+                setmessage(errorCode);
+            });
+
+
+        }
     }
      
     const toggleSignIn=()=>{
@@ -28,7 +72,7 @@ const Login = () => {
             </div>
             <form
                 onSubmit={(e)=> e.preventDefault()}
-                className=" absolute p-12  opacity-80  text-white bg-black mx-auto left-0 right-0 my-52 w-3/12">
+                className=" absolute p-12  opacity-80  text-white bg-black mx-auto left-0 right-0 my-40 w-3/12">
                 <h1 className="text-3xl font-bold py-4 mx-4">{isSignIn?"Sign in":"Sign up"}</h1>
                 {!isSignIn &&<input ref={name} type="text" placeholder=" enter your name" className="py-2 m-4 w-full rounded  text-black bg-gray-300  placeholder-black"/>}
                 <input 
