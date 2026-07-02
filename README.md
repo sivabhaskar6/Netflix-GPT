@@ -11,6 +11,10 @@
 -deploy the app
 -add firebase Authentication to sign in/up
     and stored the user credentials in firebase 
+-verify the authentication
+-created redux store with userSlice
+-implement signout feature
+-update profile icon
 
 # Features
 
