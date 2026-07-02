@@ -15,6 +15,11 @@
 -created redux store with userSlice
 -implement signout feature
 -update profile icon
+-Bug fix: if the user is not Logined redirect /Browse page to login page and vise-versa
+-unsubcribe to onAuthStateChanged callback
+-add hardcore values(links) to constant file
+
+
 
 # Features
 

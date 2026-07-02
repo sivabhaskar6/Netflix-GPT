@@ -2,16 +2,14 @@ import { useRef, useState } from "react";
 import checkValidateData from "../utils/validate";
 import {  createUserWithEmailAndPassword ,signInWithEmailAndPassword ,updateProfile} from "firebase/auth";
 import { auth } from "../utils/firebase";
-import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
-
+import { BG_IMAGE, USER_AVATAR } from "../utils/constants";
 
 
 
 
 const Login = () => {
-    const navigate = useNavigate();
 
     const [isSignIn,setisSignIn] = useState(true);
 
@@ -40,7 +38,6 @@ const Login = () => {
             .then((userCredential) => {
                 const user = userCredential.user;
                 console.log(user);
-                navigate("/Browse")
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -57,12 +54,11 @@ const Login = () => {
                 const user = userCredential.user;
                 console.log(user);
                 updateProfile(user, {
-                displayName:name?.current?.value , photoURL: "https://avatars.githubusercontent.com/u/219521789?v=4"
+                displayName:name?.current?.value , photoURL:USER_AVATAR
                 }).then(() => {
                 // Profile updated!
                 const {uid,email,displayName,photoURL} = auth.currentUser;
                  dispatch(addUser({uid:uid,email:email,displayName:displayName,photoURL:photoURL}));
-                navigate("/Browse")
                 }).catch((error) => {
                 // An error occurred
                  const errorCode = error.code;
@@ -87,7 +83,7 @@ const Login = () => {
     
         <div>
             <div className="absolute">
-                <img src="https://assets.nflxext.com/ffe/siteui/vlv3/a565a928-abda-47bd-860a-55be00b7fefc/web/IN-en-20260615-TRIFECTA-perspective_7ffb95f0-7b86-4dfa-9920-7f5651418d65_large.jpg" alt="bg img"  className="w-screen h-screen object-cover"/>
+                <img src={BG_IMAGE} alt="bg img"  className="w-screen h-screen object-cover"/>
             </div>
             <form
                 onSubmit={(e)=> e.preventDefault()}
