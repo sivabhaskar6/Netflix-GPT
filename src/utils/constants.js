@@ -6,3 +6,12 @@ export const BG_IMAGE =
 
 
 export const USER_AVATAR = "https://avatars.githubusercontent.com/u/219521789?v=4"
+
+
+export const API_OPTIONS = {
+  method: 'GET',
+  headers: {
+    accept: 'application/json',
+    Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIxNzNlMDlkNTJiMWNlZTc2MzIxMWI0MjRiYzgzZTNjOSIsIm5iZiI6MTc4MzAxMjkzMi41NTMsInN1YiI6IjZhNDY5ZTQ0MGQwOThlOGMwMWZiM2MzNyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.rLPYv6RN35k2JEmoH9rnV96uI0oHVThU4AOn1EBDHdU'
+  }
+}
