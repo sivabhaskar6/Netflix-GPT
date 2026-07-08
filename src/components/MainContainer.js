@@ -1,4 +1,6 @@
 import { useSelector } from "react-redux";
+import VideoBackground from "./VideoBackground";
+import VideoTitle from "./VideoTitle";
 
 
 
@@ -9,12 +11,15 @@ const MainContainer = () =>{
 
     if (!mainMovie) return <div>Loading...</div>;
     console.log(mainMovie);
+    const { title, overview, backdrop_path ,id } = mainMovie;
 
 
     return(
         <div className="main-container">
-            Main Container
-
+            <div className="relative">
+                <VideoBackground backdrop_path={backdrop_path} id={id} />
+                <VideoTitle title={title} overview={overview} />
+            </div>
         </div>
     )
 }
