@@ -20,7 +20,14 @@
 -add hardcore values(links) to constant file
 -regiater for TMDB API & create app & get access to tokens
 -get data from TMDB now playing movies list API
-
+-created custom Hook for nowPlaying movies
+-Create the movie slice(redux)
+-update store with movie data
+-planned for mainContainer and secondrayContainer
+-Fetch data for the Trailer video
+-ipdate the store with video data
+-embedded the youtube video and make it as autoplay and mute
+-add Tailwind css to make to mainContainer awesome
 
 
 # Features

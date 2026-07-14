@@ -16,14 +16,12 @@ const useNowPlayingMovies = () => {
 
     const getPlayingMovies = async () => {
         try {
-        console.log("hello");
         const response = await fetch("https://api.themoviedb.org/3/movie/now_playing?&page=1", API_OPTIONS);
         const data = await response.json();
-        console.log(data.results);
+        // console.log(data.results);
         dispatch(setPlayingMovies(data.results));
         } 
         catch (error) {
-        console.log("bye");
 
         console.error("Error fetching playing movies:", error);
         }

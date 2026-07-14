@@ -7,10 +7,9 @@ import VideoTitle from "./VideoTitle";
 const MainContainer = () =>{
 
     const movies = useSelector((store) => store.movie?.playingMovies);
-    const mainMovie = movies?.[0];
+    const mainMovie = movies?.[Math.floor(Math.random() * movies.length)];
 
     if (!mainMovie) return <div>Loading...</div>;
-    console.log(mainMovie);
     const { title, overview, backdrop_path ,id } = mainMovie;
 
 

@@ -1,32 +1,15 @@
-import { useEffect } from "react";
-import { API_OPTIONS } from "../utils/constants";
-import { useState } from "react";
+import {  useSelector } from "react-redux";
+import useMovieTrailer from "../hooks/useMovieTrailer";
+
 
 
 
 const VideoBackground = ({ backdrop_path, id }) => {
-    const [videoUrl, setVideoUrl] = useState(null);
-    const getVideoUrl = async () => {
-        try {
-            const response = await fetch(`https://api.themoviedb.org/3/movie/${id}/videos?&page=1`,API_OPTIONS)
-            const data = await response.json();
-            if (data.results && data.results.length > 0) {
-                // Do something with the video URL
-                const trailer = data.results.find(video => video.type === "Trailer" && video.site === "YouTube");
+    const videoUrlId = useSelector((state) => state.movie.trailerVideo);
+    
+    useMovieTrailer(id);
 
-                setVideoUrl(trailer?.key);
-            }
-        }
-        catch (error) {
-            console.error("Error fetching video URL:", error);
-        }
-    }
-
-    useEffect(() => {
-        getVideoUrl();
-    }, []);
-
-    if (!videoUrl) {
+    if (!videoUrlId) {
         return (
             <img
                 className="w-full h-screen object-cover"
@@ -37,13 +20,14 @@ const VideoBackground = ({ backdrop_path, id }) => {
     }
 
     return (
-        <div className="w-full h-screen">
-            <iframe
-                className="w-full h-screen"
-                title="Video Background"
-                src={`https://www.youtube.com/embed/${videoUrl}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&playsinline=1&loop=1&playlist=${videoUrl}`}
-            ></iframe>
-        </div>
+     <div className="fixed inset-0 w-screen h-screen">
+        <iframe
+            className="absolute inset-0 w-full h-full scale-[1.8] origin-center"
+            title="Video Background"
+            src={`https://www.youtube.com/embed/${videoUrlId}?autoplay=1&controls=0&mute=1&loop=1&playlist=${videoUrlId}`}
+            allow="autoplay; fullscreen"
+        />
+    </div>
     );
 };
 
