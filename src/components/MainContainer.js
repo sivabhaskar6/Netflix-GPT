@@ -13,13 +13,11 @@ const MainContainer = () =>{
     const { title, overview, backdrop_path ,id } = mainMovie;
 
 
-    return(
-        <div className="main-container">
-            <div className="relative">
-                <VideoBackground backdrop_path={backdrop_path} id={id} />
-                <VideoTitle title={title} overview={overview} />
-            </div>
-        </div>
-    )
+    return (
+    <div className="relative h-[80vh]">
+      <VideoBackground backdrop_path={backdrop_path} id={id} />
+      <VideoTitle title={title} overview={overview} />
+    </div>
+  );
 }
 export default MainContainer;

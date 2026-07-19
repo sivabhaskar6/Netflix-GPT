@@ -20,7 +20,7 @@ const VideoBackground = ({ backdrop_path, id }) => {
     }
 
     return (
-     <div className="fixed inset-0 w-screen h-screen">
+     <div className=" inset-0 w-screen h-screen">
         <iframe
             className="absolute inset-0 w-full h-full scale-[1.8] origin-center"
             title="Video Background"
