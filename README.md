@@ -34,7 +34,9 @@
 - Add TMDB image CDN
 - Made browese page Amazing using Tailwind css
 - create custome hooks for the Different different Api Movies in the movie list
-
+- Add GPT search page
+- GPT search bar
+- GPT slice to redux app store
 
 # Features
 

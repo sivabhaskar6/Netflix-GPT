@@ -84,12 +84,14 @@ const Login = () => {
         <div>
             <div className="absolute">
                 <img src={BG_IMAGE} alt="bg img"  className="w-screen h-screen object-cover"/>
+            <div className="absolute inset-0 bg-black/40"></div>
             </div>
+
             <form
                 onSubmit={(e)=> e.preventDefault()}
                 className=" absolute p-12  opacity-80  text-white bg-black mx-auto left-0 right-0 my-40 w-3/12">
                 <h1 className="text-3xl font-bold py-4 mx-4">{isSignIn?"Sign in":"Sign up"}</h1>
-                {!isSignIn &&<input ref={name} type="text" placeholder=" enter your name" className="py-2 m-4 w-full rounded  text-black bg-gray-300  placeholder-black"/>}
+                {!isSignIn &&<input ref={name} type="text" placeholder=" enter your name" className="py-4 m-4 w-full rounded  text-black bg-gray-300  placeholder-black"/>}
                 <input 
                     ref={email} type="text" placeholder=" enter your email" className="py-2 m-4 w-full rounded bg-gray-300 text-black  placeholder-black"
                 />
