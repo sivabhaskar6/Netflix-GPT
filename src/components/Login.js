@@ -37,7 +37,7 @@ const Login = () => {
             signInWithEmailAndPassword(auth, email.current.value,password.current.value)
             .then((userCredential) => {
                 const user = userCredential.user;
-                console.log(user);
+                // console.log(user);
             })
             .catch((error) => {
                 const errorCode = error.code;
@@ -52,7 +52,7 @@ const Login = () => {
             createUserWithEmailAndPassword(auth, email.current.value,password.current.value)
             .then((userCredential) => {
                 const user = userCredential.user;
-                console.log(user);
+                // console.log(user);
                 updateProfile(user, {
                 displayName:name?.current?.value , photoURL:USER_AVATAR
                 }).then(() => {
@@ -89,7 +89,8 @@ const Login = () => {
 
             <form
                 onSubmit={(e)=> e.preventDefault()}
-                className=" absolute p-12  opacity-80  text-white bg-black mx-auto left-0 right-0 my-40 w-3/12">
+                className=" absolute p-12  opacity-80  text-white bg-black mx-auto left-0 right-0 my-40 w-3/12"
+            >
                 <h1 className="text-3xl font-bold py-4 mx-4">{isSignIn?"Sign in":"Sign up"}</h1>
                 {!isSignIn &&<input ref={name} type="text" placeholder=" enter your name" className="py-4 m-4 w-full rounded  text-black bg-gray-300  placeholder-black"/>}
                 <input 

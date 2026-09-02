@@ -3,7 +3,7 @@ import MovieCard from "./MovieCard.js";
 
 const MovieList = ({ title, movies }) =>{
 
-    console.log("movies", movies);
+    // console.log("movies", movies);
 
     return(
         <div className="movie-list px-6">

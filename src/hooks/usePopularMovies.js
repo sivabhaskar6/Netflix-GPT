@@ -1,29 +1,29 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setPlayingMovies } from "../utils/movieSlice";
+import {  setPopularMovies } from "../utils/movieSlice";
 import { API_OPTIONS } from "../utils/constants";
 
 
 
-const useNowPlayingMovies = () => {
+const usePopularMovies = () => {
 
-    const {playingMovies} = useSelector((state) => state.movie);
+    const {popularMovies} = useSelector((state) => state.movie);
     
     //fetch now playing movies from the TMDB API and store them in the Redux store
 
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if(!playingMovies)
+        if(!popularMovies)
          getPlayingMovies();
 
     },[])
 
     const getPlayingMovies = async () => {
         try {
-        const response = await fetch("https://api.themoviedb.org/3/movie/now_playing?&page=2", API_OPTIONS);
+        const response = await fetch("https://api.themoviedb.org/3/movie/top_rated?language=en-US&page=1", API_OPTIONS);
         const data = await response.json();
-        dispatch(setPlayingMovies(data.results));
+        dispatch(setPopularMovies(data.results));
         } 
         catch (error) {
 
@@ -32,4 +32,4 @@ const useNowPlayingMovies = () => {
     }
 }
 
-export default useNowPlayingMovies;
+export default usePopularMovies;
